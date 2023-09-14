@@ -1,5 +1,5 @@
 import psycopg2
-
+import os
 from src import class_dbmanager, class_getdata, function, config
 
 def main():
@@ -9,7 +9,8 @@ def main():
     # print(list_user.split(" "))
     print(
         "1: Создать базу данных",
-        "2: Если создана база данных нажми сюда"
+        "2: Если создана база данных нажми сюда",
+        "3: Узнать названия созданных баз данных"
         , sep="\n"
     )
     choise_user = int(input("Введите цифру: "))
@@ -23,7 +24,7 @@ def main():
         list_data_in_request = data_vac_hh.list_data
         function.write_in_database(list_data_in_request, db_name, params=par)
     elif choise_user == 2:
-        db_name = input("Введите название новой базы данных\n")
+        db_name = input("Введите название базы данных\n")
         while True:
             print(
                 "1: Получает список всех компаний и количество вакансий у каждой компании.",
@@ -31,7 +32,8 @@ def main():
                 "названия вакансии и зарплаты и ссылки на вакансию.",
                 "3: Получает среднюю зарплату по вакансиям.",
                 "4: Получает список всех вакансий, у которых зарплата выше средней по всем вакансиям.",
-                "5: Получает список всех вакансий, в названии которых содержатся переданные в метод слова, например python.",
+                "5: Получает список всех вакансий, в названии которых содержатся переданные в метод слова, например python."
+                "0: Закончить программу",
                 sep="\n"
             )
             work_user_db = int(input("Введите цифру: "))
@@ -60,6 +62,8 @@ def main():
                 continue
             elif work_user_db == 0:
                 break
+    elif choise_user == 3:
+        print(os.system("cd files && sudo -S -u postgres psql -c 'SELECT datname FROM pg_database;' > names_db.txt"))
 
 
 if __name__ == '__main__':
