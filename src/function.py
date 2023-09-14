@@ -127,8 +127,7 @@ def write_in_database(data: list[dict[str, Any]], database_name: str, params: di
             company_id = cur.fetchone()[0]
             # cur.execute('TRUNCATE TABLE company RESTART IDENTITY')
             vacancy_data = company['data']['items']
-            for x in vacancy_data:
-                vacancy_data_items = x
+            for vacancy_data_items in vacancy_data:
                 cur.execute(
                     """
                     INSERT INTO vacancy (company_id, vacancy_name, salary_from, salary_to, vacancy_requirement,
@@ -146,3 +145,15 @@ def write_in_database(data: list[dict[str, Any]], database_name: str, params: di
 
     conn.commit()
     conn.close()
+
+def print_vac_header() -> None:
+    """Печатает заголовок таблицы в консоль."""
+
+    print(
+        "| НАЗВАНИЕ ВАКАНСИИ                           | ПРОСМОТРОВ | ЛАЙКОВ | РЕЙТИНГ | ССЫЛКА НА ВАКАНСИЮ                               |")
+
+
+def print_vac_info(video_info: dict) -> None:
+    """Печатает информацию о видео в консоль в виде строки таблицы."""
+    print(
+        f"| {video_info['title']:<40} | {video_info['view_count']:<10} | {video_info['like_count']:<6} | {video_info['ratio']:<7} | {video_info['url']:<35} |")
