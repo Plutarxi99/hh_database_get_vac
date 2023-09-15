@@ -1,10 +1,12 @@
-import psycopg2
 import os
+
 from src import class_dbmanager, class_getdata, function, config
+
 
 def main():
     print("Привет! Напиши компании, которые тебя интересуют")
-    list_user = ["Юнипро", "СберБанк", "РОСАТОМ", "Газпром нефть", "Азбука вкуса", "МегаФон", "Магнит", "Bayer", "Зарубежнефть", "Металлоинвест"]
+    list_user = ["Юнипро", "СберБанк", "РОСАТОМ", "Газпром нефть", "Азбука вкуса", "МегаФон", "Магнит", "Bayer",
+                 "Зарубежнефть", "Металлоинвест"]
     # list_user = input().split(" ")
     # print(list_user.split(" "))
     print(
@@ -56,7 +58,7 @@ def main():
                 print(exemplar_4)
                 continue
             elif work_user_db == 5:
-                word_search = input("Введите искомое слово")
+                word_search = str(input("Введите искомое слово"))
                 exemplar_5 = db_1.get_vacancies_with_keyword(word_search)
                 print(exemplar_5)
                 continue
@@ -76,10 +78,11 @@ if __name__ == '__main__':
     # db_name = 'db_hh'
     # par = config.config()
     # function.create_database(db_name, params=par)
-    # q = class_get_data.GetDataHH(list_company)
+    # q = class_getdata.GetDataHH(list_company)
     # for x in q:
     #     x
     # l = q.list_data
+    # print(l)
     # function.write_in_database(l, db_name, params=par)
     # db_1 = class_dbmanager.DBManager(database_name=db_name, params=par)
     # qw = db_1.get_vacancies_with_keyword('Аналитик')
