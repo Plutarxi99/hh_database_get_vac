@@ -1,0 +1,12 @@
+  datname  
+-----------
+ postgres
+ template1
+ template0
+ test
+ north
+ northwind
+ youtube
+ hh_db
+(8 rows)
+
