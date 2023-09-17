@@ -24,8 +24,7 @@ def main():
         par = config.config()
         if choise_user == 1:
             print("Привет! Напиши компании, которые тебя интересуют")
-            # list_user = str(input()).split(" ")
-            list_user = ['дорога', 'вкусно и точка']
+            list_user = str(input()).split(" ")
             # Отправляем список в класс для получения данных
             data_vac_hh = class_getdata.GetDataHH(list_user, stop=len(list_user))
             # Делаем итерацию в классе и получаем список данных
