@@ -7,6 +7,6 @@
  north
  northwind
  youtube
- db_hh
+ hh_db
 (8 rows)
 
